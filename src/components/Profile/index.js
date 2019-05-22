@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Profile extends Component{
-  state = {
-    name: '',
-    age: ''
-  }
-
   render(){
-
-    const { name, age } = this.state;
+    const { name, age } = this.props;
     return (
       <div className="profile card">
         <h1>Profile</h1>
@@ -21,4 +16,13 @@ class Profile extends Component{
   }
 }
 
-export default Profile;
+const mapStateToProps = ({ app }) => {
+  return {
+    name: app.name,
+    age: app.age
+  }
+};
+
+const mapDispatchToProps = () => {return {};};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
